@@ -21,7 +21,9 @@
         <div class="card">
             <div class="card-body">
 
-                <form id="emp-form" action="" method="post">
+                <form id="emp-form" action="/employee-insert" method="POST">
+                    @csrf
+
                     <div class="form-group">
                         <input type="text" name="firstName" placeholder="Nombres" class="form-control" required>
                     </div>
@@ -39,6 +41,7 @@
                     </div>
                     <input type="hidden" id="prodId">
                     <button type="submit" class="btn btn-primary btn-block text-center">Guardar Empleado</button>
+
                 </form>
 
             </div>
