@@ -20,6 +20,7 @@
     <div class="col-md-5">
         <div class="card">
             <div class="card-body">
+
                 <form id="emp-form" action="" method="post">
                     <div class="form-group">
                         <input type="text" name="firstName" placeholder="Nombres" class="form-control" required>
@@ -39,6 +40,7 @@
                     <input type="hidden" id="prodId">
                     <button type="submit" class="btn btn-primary btn-block text-center">Guardar Empleado</button>
                 </form>
+
             </div>
         </div>
     </div>
@@ -58,13 +60,16 @@
             </tr>
         </thead>
         <tbody id="employees">
+
+            @foreach ($employees as $employee)
+
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $employee -> id }}</td>
+                <td>{{ $employee -> firstName }}</td>
+                <td>{{ $employee -> lastName }}</td>
+                <td>{{ $employee -> dni }}</td>
+                <td>{{ $employee -> salary }}</td>
+                <td>{{ $employee -> cellphone }}</td>
                 <td>
                     <a
                         class="btn btn-success pt-2 pb-2 pl-3 pr-3"
@@ -79,6 +84,7 @@
                     </a>
                 </td>
             </tr>
+            @endforeach
         </tbody>
         </table>
     </div>
