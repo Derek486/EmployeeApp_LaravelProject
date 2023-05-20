@@ -22,16 +22,10 @@
 
     <div class="container">
         <div class="row p-4 @yield('class-center')">
-            <div class="col-md-5">
-                <div class="card">
-                    <div class="card-body">
 
-                        <!-- Aquí el contenido -->
-                        @yield('content')
+            <!-- Aquí el contenido-->
+            @yield('content')
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </body>

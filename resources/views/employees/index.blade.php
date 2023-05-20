@@ -17,25 +17,31 @@
 
     {{-- Formulario para añadir empleados --}}
 
-    <form id="emp-form" action="" method="post">
-        <div class="form-group">
-            <input type="text" name="firstName" placeholder="Nombres" class="form-control" required>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <form id="emp-form" action="" method="post">
+                    <div class="form-group">
+                        <input type="text" name="firstName" placeholder="Nombres" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastName" placeholder="Apellidos" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="dni" placeholder="DNI" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="salary" placeholder="Salario" class="form-control" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="cellphone" placeholder="Telefono" class="form-control" min="900000000" required>
+                    </div>
+                    <input type="hidden" id="prodId">
+                    <button type="submit" class="btn btn-primary btn-block text-center">Guardar Empleado</button>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="text" name="lastName" placeholder="Apellidos" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <input type="number" name="dni" placeholder="DNI" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <input type="number" name="salary" placeholder="Salario" class="form-control" min="0" step="0.01" required>
-        </div>
-        <div class="form-group">
-            <input type="tel" name="cellphone" placeholder="Telefono" class="form-control" min="900000000" required>
-        </div>
-        <input type="hidden" id="prodId">
-        <button type="submit" class="btn btn-primary btn-block text-center">Guardar Empleado</button>
-    </form>
+    </div>
 
     {{-- Tabla --}}
 
