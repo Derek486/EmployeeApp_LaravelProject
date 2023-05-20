@@ -49,10 +49,30 @@ class EmployeesController extends Controller
         // Redireccionamos a ruta de index
         return redirect()->route('employee-index')->with('success', 'Empleado eliminado');
     }
-    public function show(Request $request) {
+    public function show($id) {
 
+        // Obtenemos el empleado con dicho id
+        $employee = Employee::find($id);
+
+        // Redireccionamos a la vista de edit
+        return view('employees.edit', ['employee' => $employee]);
     }
-    public function update(Request $request) {
+    public function update(Request $request, $id) {
+
+        // Obtenemos el empleado con dicho id
+        $employee = Employee::find($id);
+
+        // Actualizamos valores
+        $employee -> name = $request -> name;
+        $employee -> lastName = $request -> lastName;
+        $employee -> dni = $request -> dni;
+        $employee -> salary = $request -> salary;
+        $employee -> cellphone = $request -> cellphone;
+
+        $employee -> save();
+
+        // Redireccionamos a ruta de index
+        return redirect()->route('employee-index')->with('success', 'Empleado actualizado');
 
     }
 }

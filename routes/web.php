@@ -16,5 +16,8 @@ use App\Http\Controllers\EmployeesController;
 
 Route::get('/', [EmployeesController::class, 'index']) -> name('employee-index');
 Route::post('/employee-insert', [EmployeesController::class, 'store']) -> name('employee-insert');
+Route::get('/employee-edit/{id}', [EmployeesController::class, 'show']) -> name('employee-edit');
 Route::delete('/employee-delete/{id}', [EmployeesController::class, 'delete']) -> name('employee-delete');
+Route::patch('/employee-update/{id}', [EmployeesController::class, 'update']) -> name('employee-update');
+
 

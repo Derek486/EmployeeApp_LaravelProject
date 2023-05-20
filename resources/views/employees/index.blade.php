@@ -76,7 +76,7 @@
                 <td>
                     <a
                         class="btn btn-success pt-2 pb-2 pl-3 pr-3"
-                        href="">Editar
+                        href="{{ route('employee-edit', ['id' => $employee -> id]) }}">Editar
                     </a>
                 </td>
                 <td>
