@@ -25,7 +25,7 @@
                     @csrf
 
                     <div class="form-group">
-                        <input type="text" name="firstName" placeholder="Nombres" class="form-control" required>
+                        <input type="text" name="name" placeholder="Nombres" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <input type="text" name="lastName" placeholder="Apellidos" class="form-control" required>
@@ -68,7 +68,7 @@
 
             <tr>
                 <td>{{ $employee -> id }}</td>
-                <td>{{ $employee -> firstName }}</td>
+                <td>{{ $employee -> name }}</td>
                 <td>{{ $employee -> lastName }}</td>
                 <td>{{ $employee -> dni }}</td>
                 <td>{{ $employee -> salary }}</td>

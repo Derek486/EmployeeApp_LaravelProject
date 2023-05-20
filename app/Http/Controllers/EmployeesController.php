@@ -26,6 +26,20 @@ class EmployeesController extends Controller
     }
     public function store(Request $request) {
 
+        // Creamos un nuevo empleado
+        $employee = new Employee;
+
+        // Insertamos valores
+        $employee -> name = $request -> name;
+        $employee -> lastName = $request -> lastName;
+        $employee -> dni = $request -> dni;
+        $employee -> salary = $request -> salary;
+        $employee -> cellphone = $request -> cellphone;
+
+        $employee -> save();
+
+        // Redireccionamos a ruta de index
+        return redirect()->route('employee-index')->with('success', 'Empleado registrado');
     }
     public function delete($id) {
 
