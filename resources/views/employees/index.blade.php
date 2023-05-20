@@ -80,11 +80,17 @@
                     </a>
                 </td>
                 <td>
-                    <a
-                        onclick="return confirm('Estas seguro de eliminar?');"
-                        class="btn btn-danger pt-2 pb-2 pl-3 pr-3"
-                        href="">Eliminar
-                    </a>
+                    <form action="{{ route('employee-delete', ['id' => $employee -> id]) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+
+                        <button
+                            onclick="return confirm('Estas seguro de eliminar?');"
+                            class="btn btn-danger pt-2 pb-2 pl-3 pr-3"
+                        >Eliminar
+                        </button>
+
+                    </form>
                 </td>
             </tr>
             @endforeach

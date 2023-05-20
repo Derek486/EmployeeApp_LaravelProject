@@ -43,6 +43,11 @@ class EmployeesController extends Controller
     }
     public function delete($id) {
 
+        // Eliminamos al empleado con dicho id
+        Employee::destroy($id);
+
+        // Redireccionamos a ruta de index
+        return redirect()->route('employee-index')->with('success', 'Empleado eliminado');
     }
     public function show(Request $request) {
 
