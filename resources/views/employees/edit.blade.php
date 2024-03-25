@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.employee')
 
 @section('content')
 
@@ -11,8 +11,8 @@
             <div class="card-body">
 
                 <!-- FORMULARIO PARA EDITAR EMPLEADO -->
-                <form id="emp-form" action="{{ route('employee-update', ['id' => $employee -> id]) }}" method="POST">
-                    @method('PATCH')
+                <form id="emp-form" action="{{ route('employees.update', ['id' => $employee -> id]) }}" method="POST">
+                    @method('PUT')
                     @csrf
 
                     <div class="input-group mb-3">
@@ -57,7 +57,7 @@
 
                 </form>
 
-                <a class="btn btn-danger btn-block text-center mt-2" href="/">Cancelar</a>
+                <a class="btn btn-danger btn-block text-center mt-2" href="/employees">Cancelar</a>
 
             </div>
         </div>

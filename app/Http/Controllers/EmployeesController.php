@@ -15,10 +15,18 @@ class EmployeesController extends Controller
      * show -> mostrar empleado para actualizar
      * update -> actualizar empleado
      */
-    public function index() {
+    public function index(Request $request) {
 
         // Obtenemos todos los empleados
         $employees = Employee::all();
+
+        $id_search = $request->query('search');
+
+        if ($id_search) {
+            $employee_find = Employee::find($id_search);
+            if ($employee_find)
+                $employees = [$employee_find];
+        }
 
         // Redirecciona a la vista index con todos los empleados para listarlos
         return view('employees.index', ['employees' => $employees]);
@@ -39,7 +47,7 @@ class EmployeesController extends Controller
         $employee -> save();
 
         // Redireccionamos a ruta de index
-        return redirect()->route('employee-index')->with('success', 'Empleado registrado');
+        return redirect()->route('employees.index')->with('success', 'Empleado registrado');
     }
     public function delete($id) {
 
@@ -47,7 +55,7 @@ class EmployeesController extends Controller
         Employee::destroy($id);
 
         // Redireccionamos a ruta de index
-        return redirect()->route('employee-index')->with('success', 'Empleado eliminado');
+        return redirect()->route('employees.index')->with('success', 'Empleado eliminado');
     }
     public function show($id) {
 
@@ -72,7 +80,7 @@ class EmployeesController extends Controller
         $employee -> save();
 
         // Redireccionamos a ruta de index
-        return redirect()->route('employee-index')->with('success', 'Empleado actualizado');
+        return redirect()->route('employees.index')->with('success', 'Empleado actualizado');
 
     }
 }

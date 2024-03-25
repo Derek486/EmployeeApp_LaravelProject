@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeesController;
 
@@ -14,10 +15,20 @@ use App\Http\Controllers\EmployeesController;
 |
 */
 
-Route::get('/', [EmployeesController::class, 'index']) -> name('employee-index');
-Route::post('/employee-insert', [EmployeesController::class, 'store']) -> name('employee-insert');
-Route::get('/employee-edit/{id}', [EmployeesController::class, 'show']) -> name('employee-edit');
-Route::delete('/employee-delete/{id}', [EmployeesController::class, 'delete']) -> name('employee-delete');
-Route::patch('/employee-update/{id}', [EmployeesController::class, 'update']) -> name('employee-update');
+Route::redirect('/','/employees');
 
+Route::get('/register', [AuthController::class, 'index_register']) -> name('register');
+Route::post('/register', [AuthController::class, 'register']) -> name('register.store');
 
+Route::get('/login', [AuthController::class, 'index_login']) -> name('login');
+Route::post('/login', [AuthController::class, 'authenticate']) -> name('login.store');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/employees', [EmployeesController::class, 'index']) -> name('employees.index');
+    Route::post('/employees', [EmployeesController::class, 'store']) -> name('employees.insert');
+    Route::get('/employees/{id}', [EmployeesController::class, 'show']) -> name('employees.edit');
+    Route::delete('/employee/{id}', [EmployeesController::class, 'delete']) -> name('employees.delete');
+    Route::put('/employees/{id}', [EmployeesController::class, 'update']) -> name('employees.update');
+});
